@@ -1,6 +1,8 @@
 package com.yfckevin.springkotlinlearning.data.dto
 
 import com.yfckevin.springkotlinlearning.data.User
+import com.yfckevin.springkotlinlearning.data.enu.Gender
+import java.time.LocalDateTime
 
 data class UserDto (
 
@@ -9,12 +11,18 @@ data class UserDto (
         val name: String,
 
         val age: Int,
+
+        val gender: Gender,
+
+        val createTime: LocalDateTime
 ){
     fun toDo() = User(
             id = id,
             firstname = name.split(",")[0].trim(),
             lastname = name.split(",")[1].trim(),
-            age = age
+            age = age,
+            createTime = createTime,
+            gender = gender
     )
 
 }

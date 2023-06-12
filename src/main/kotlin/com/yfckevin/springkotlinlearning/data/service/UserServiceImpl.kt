@@ -2,7 +2,9 @@ package com.yfckevin.springkotlinlearning.data.service
 
 import com.yfckevin.springkotlinlearning.data.dao.UserDao
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserServiceImpl(
@@ -14,6 +16,14 @@ class UserServiceImpl(
             userDao.findById(id)
                     .map { it.toDto() }
                     .orElseThrow { RuntimeException() }
+
+    override fun queryUserByFirstName(firstName: String) =
+        userDao.findByFirstNameOrderById(firstName)
+            .map { it.toDto() }
+
+    override fun queryUserByLastName(lastName: String, pageable: Pageable) =
+        userDao.findByLastName(lastName, pageable)
+            .map { it.toDto() }
 
     override fun modifyUser(userDto: UserDto) =
             userDao.findById(userDto.id!!)
@@ -27,11 +37,9 @@ class UserServiceImpl(
                         userDao.save(this).toDto()
                     }
 
+    @Transactional
     override fun modifyUserAgeById(age: Int, id: Long) =
-            userDao.findById(id)
-                    .orElseThrow { RuntimeException() }
-                    .apply { this.age = age }
-                    .run { userDao.save(this).toDto() }
+            userDao.updateUserAgeById(age, id).toDto()
 
     override fun deleteUserById(id: Long) = userDao.deleteById(id)
 }
