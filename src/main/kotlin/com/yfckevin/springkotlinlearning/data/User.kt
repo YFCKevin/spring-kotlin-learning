@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name = "member")
+@Table(name = "_user")
 data class User (
 
         @Id
@@ -14,10 +14,10 @@ data class User (
         val id: Long?,
 
         @Column
-        var firstname: String,
+        var firstName: String,
 
         @Column
-        var lastname: String,
+        var lastName: String,
 
         @Column
         var age: Int,
@@ -32,7 +32,7 @@ data class User (
         ){
     fun toDto() = UserDto(
             id = id,
-            name = "$firstname, $lastname",
+            name = "$firstName, $lastName",
             age = age,
             gender = gender,
             createTime = createTime

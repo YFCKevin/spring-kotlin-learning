@@ -12,25 +12,25 @@ class UserServiceImpl(
 ): UserService{
     override fun addUser(userDto: UserDto) = userDao.save(userDto.toDo()).toDto()
 
-    override fun queryUserById(id: Long) =
+    override fun queryUserById(id: Long): UserDto =
             userDao.findById(id)
                     .map { it.toDto() }
                     .orElseThrow { RuntimeException() }
 
-    override fun queryUserByFirstName(firstName: String) =
-        userDao.findByFirstNameOrderById(firstName)
+    override fun queryUserByFirstName(firstname: String) =
+        userDao.findByFirstNameOrderById(firstname)
             .map { it.toDto() }
 
     override fun queryUserByLastName(lastName: String, pageable: Pageable) =
-        userDao.findByLastName(lastName, pageable)
+        userDao.findUserByLastName(lastName, pageable)
             .map { it.toDto() }
 
     override fun modifyUser(userDto: UserDto) =
             userDao.findById(userDto.id!!)
                     .orElseThrow { RuntimeException() }
                     .apply {
-                        this.firstname = userDto.name.split(",")[0].trim()
-                        this.lastname = userDto.name.split(",")[1].trim()
+                        this.firstName = userDto.name.split(",")[0].trim()
+                        this.lastName = userDto.name.split(",")[1].trim()
                         this.age = userDto.age
                     }
                     .run {

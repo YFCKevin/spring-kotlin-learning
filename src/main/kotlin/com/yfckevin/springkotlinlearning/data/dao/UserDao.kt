@@ -14,9 +14,9 @@ interface UserDao: JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
     fun findByFirstNameOrderById(firstName: String): List<User>
 
-    fun findByLastName(lastName: String, pageable: Pageable): Page<User>
+    fun findUserByLastName(lastName: String, pageable: Pageable): Page<User>
 
     @Modifying
-    @Query("UPDATE memeber u SET u.age = :age WHERE u.id = :id;")
+    @Query("UPDATE User u SET u.age = :age WHERE u.id = :id")
     fun updateUserAgeById(age: Int, id: Long): User
 }

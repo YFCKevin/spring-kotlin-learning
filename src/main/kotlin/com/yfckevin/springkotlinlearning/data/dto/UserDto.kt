@@ -18,8 +18,8 @@ data class UserDto (
 ){
     fun toDo() = User(
             id = id,
-            firstname = name.split(",")[0].trim(),
-            lastname = name.split(",")[1].trim(),
+            firstName = name.split(",")[0].trim(),
+            lastName = name.split(",")[1].trim(),
             age = age,
             createTime = createTime,
             gender = gender

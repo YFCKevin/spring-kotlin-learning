@@ -27,7 +27,7 @@ class UserController (
     @GetMapping("/{id}")
     fun queryUserById(@PathVariable id: Long) = userService.queryUserById(id)
 
-    @GetMapping("/{firstName}")
+    @GetMapping("{firstName}")
     fun queryUserByFirstName(@PathVariable firstName: String) = userService.queryUserByFirstName(firstName)
 
     @GetMapping
