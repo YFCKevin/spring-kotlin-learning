@@ -30,7 +30,9 @@ data class User (
         var createTime: LocalDateTime,
 
         ){
-    fun toDto() = UserDto(
+        constructor() : this(null, "", "", 0, Gender.MALE, LocalDateTime.now())
+
+        fun toDto() = UserDto(
             id = id,
             name = "$firstName, $lastName",
             age = age,
