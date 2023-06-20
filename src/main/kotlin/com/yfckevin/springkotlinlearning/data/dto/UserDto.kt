@@ -1,6 +1,6 @@
 package com.yfckevin.springkotlinlearning.data.dto
 
-import com.yfckevin.springkotlinlearning.data.User
+import com.yfckevin.springkotlinlearning.data.entity.User
 import com.yfckevin.springkotlinlearning.data.enu.Gender
 import java.time.LocalDateTime
 

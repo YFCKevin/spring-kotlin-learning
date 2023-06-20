@@ -11,3 +11,15 @@ services:
       - "5432:5432"
     networks:
       - default
+
+  mongodb:
+    image: arm64v8/mongo:latest
+    environment:
+      - MONGODB_USER=root
+      - MONGODB_PASS=rootroot
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+    networks:
+      - default

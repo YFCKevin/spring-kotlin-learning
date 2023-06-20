@@ -1,6 +1,6 @@
 package com.yfckevin.springkotlinlearning.data.dao
 
-import com.yfckevin.springkotlinlearning.data.User
+import com.yfckevin.springkotlinlearning.data.entity.User
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository

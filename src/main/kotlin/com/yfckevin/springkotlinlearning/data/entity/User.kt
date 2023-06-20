@@ -1,7 +1,8 @@
-package com.yfckevin.springkotlinlearning.data
+package com.yfckevin.springkotlinlearning.data.entity
 
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
 import com.yfckevin.springkotlinlearning.data.enu.Gender
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 import javax.persistence.*
 
