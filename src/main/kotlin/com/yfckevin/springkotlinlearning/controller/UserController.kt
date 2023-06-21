@@ -1,7 +1,7 @@
-package com.yfckevin.springkotlinlearning.data.controller
+package com.yfckevin.springkotlinlearning.controller
 
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
-import com.yfckevin.springkotlinlearning.data.service.UserService
+import com.yfckevin.springkotlinlearning.service.UserService
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.web.bind.annotation.DeleteMapping

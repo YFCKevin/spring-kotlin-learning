@@ -1,4 +1,4 @@
-package com.yfckevin.springkotlinlearning.data.service
+package com.yfckevin.springkotlinlearning.service
 
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
 import org.springframework.data.domain.Page

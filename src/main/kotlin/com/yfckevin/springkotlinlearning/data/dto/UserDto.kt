@@ -15,7 +15,7 @@ data class UserDto (
 
         val gender: Gender,
 
-        val createTime: LocalDateTime
+        val createTime: LocalDateTime,
 ) : Serializable {
     fun toDo() = User(
             id = id,

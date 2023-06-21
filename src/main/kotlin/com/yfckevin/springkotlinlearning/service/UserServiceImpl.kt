@@ -1,6 +1,7 @@
-package com.yfckevin.springkotlinlearning.data.service
+package com.yfckevin.springkotlinlearning.service
 
-import com.yfckevin.springkotlinlearning.data.dao.UserDao
+import com.yfckevin.springkotlinlearning.dao.OrderDao
+import com.yfckevin.springkotlinlearning.dao.UserDao
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.CachePut
@@ -11,8 +12,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserServiceImpl(
-        val userDao: UserDao
-): UserService{
+    val userDao: UserDao,
+    val orderDao: OrderDao
+): UserService {
 
     @CachePut(cacheNames = ["UserService"], key = "#result.id")
     override fun addUser(userDto: UserDto) = userDao.save(userDto.toDo()).toDto()

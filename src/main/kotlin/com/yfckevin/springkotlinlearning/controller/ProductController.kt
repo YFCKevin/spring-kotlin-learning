@@ -1,6 +1,6 @@
-package com.yfckevin.springkotlinlearning.data.controller
+package com.yfckevin.springkotlinlearning.controller
 
-import com.yfckevin.springkotlinlearning.data.dao.ProductDao
+import com.yfckevin.springkotlinlearning.dao.ProductDao
 import com.yfckevin.springkotlinlearning.data.entity.Product
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

@@ -1,4 +1,4 @@
-package com.yfckevin.springkotlinlearning.data.dao
+package com.yfckevin.springkotlinlearning.dao
 
 import com.yfckevin.springkotlinlearning.data.entity.User
 import org.springframework.data.domain.Page
