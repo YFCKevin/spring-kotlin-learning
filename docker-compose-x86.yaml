@@ -15,11 +15,20 @@ services:
   mongodb:
     image: arm64v8/mongo:latest
     environment:
-      - MONGODB_USER=root
-      - MONGODB_PASS=rootroot
+      - MONGODB_USER=chenyifan
+      - MONGODB_PASS=password
     expose:
       - 27017
     ports:
       - "27017:27017"
+    networks:
+      - default
+
+  redis:
+    image: arm64v8/redis:latest
+    expose:
+      - 6380
+    ports:
+      - "6380:6380"
     networks:
       - default

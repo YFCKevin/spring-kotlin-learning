@@ -2,6 +2,9 @@ package com.yfckevin.springkotlinlearning.data.service
 
 import com.yfckevin.springkotlinlearning.data.dao.UserDao
 import com.yfckevin.springkotlinlearning.data.dto.UserDto
+import org.springframework.cache.annotation.CacheEvict
+import org.springframework.cache.annotation.CachePut
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -10,21 +13,27 @@ import org.springframework.transaction.annotation.Transactional
 class UserServiceImpl(
         val userDao: UserDao
 ): UserService{
+
+    @CachePut(cacheNames = ["UserService"], key = "#result.id")
     override fun addUser(userDto: UserDto) = userDao.save(userDto.toDo()).toDto()
 
+    @Cacheable(cacheNames = ["UserService"], key = "#id")
     override fun queryUserById(id: Long): UserDto =
             userDao.findById(id)
                     .map { it.toDto() }
                     .orElseThrow { RuntimeException() }
 
-    override fun queryUserByFirstName(firstname: String) =
-        userDao.findByFirstNameOrderById(firstname)
+    @Cacheable(cacheNames = ["UserService"], key = "#firstName")
+    override fun queryUserByFirstName(firstName: String) =
+        userDao.findByFirstNameOrderById(firstName)
             .map { it.toDto() }
 
+    @Cacheable(cacheNames = ["UserService"], key = "#lastName")
     override fun queryUserByLastName(lastName: String, pageable: Pageable) =
         userDao.findUserByLastName(lastName, pageable)
             .map { it.toDto() }
 
+    @CachePut(cacheNames = ["UserService"], key = "#result.id")
     override fun modifyUser(userDto: UserDto) =
             userDao.findById(userDto.id!!)
                     .orElseThrow { RuntimeException() }
@@ -37,9 +46,11 @@ class UserServiceImpl(
                         userDao.save(this).toDto()
                     }
 
+    @CachePut(cacheNames = ["UserService"], key = "#result.id")
     @Transactional
     override fun modifyUserAgeById(age: Int, id: Long) =
             userDao.updateUserAgeById(age, id).toDto()
 
+    @CacheEvict(cacheNames = ["UserService"], key = "#result.id")
     override fun deleteUserById(id: Long) = userDao.deleteById(id)
 }

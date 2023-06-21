@@ -2,6 +2,7 @@ package com.yfckevin.springkotlinlearning.data.dto
 
 import com.yfckevin.springkotlinlearning.data.entity.User
 import com.yfckevin.springkotlinlearning.data.enu.Gender
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class UserDto (
@@ -15,7 +16,7 @@ data class UserDto (
         val gender: Gender,
 
         val createTime: LocalDateTime
-){
+) : Serializable {
     fun toDo() = User(
             id = id,
             firstName = name.split(",")[0].trim(),
