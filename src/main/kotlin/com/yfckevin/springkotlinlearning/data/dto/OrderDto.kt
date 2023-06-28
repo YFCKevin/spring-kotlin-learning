@@ -1,6 +1,7 @@
 package com.yfckevin.springkotlinlearning.data.dto
 
 import com.yfckevin.springkotlinlearning.data.enu.Gender
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class OrderDto (
@@ -14,6 +15,6 @@ data class OrderDto (
     val uid: String,
 
     val firstName: String,
-){
+) : Serializable {
 
 }

@@ -4,6 +4,7 @@ import com.yfckevin.springkotlinlearning.data.dto.UserDto
 import com.yfckevin.springkotlinlearning.service.UserService
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -25,7 +26,10 @@ class UserController (
     fun addUser(@RequestBody userDto: UserDto) = userService.addUser(userDto)
 
     @GetMapping("/{id}")
-    fun queryUserById(@PathVariable id: Long) = userService.queryUserById(id)
+    fun queryUserById(@PathVariable id: Long): ResponseEntity<UserDto> {
+        val queryUserById = userService.queryUserById(id)
+        return ResponseEntity.ok().body(queryUserById)
+    }
 
     @GetMapping("/firstname/{firstName}")
     fun queryUserByFirstName(@PathVariable firstName: String) = userService.queryUserByFirstName(firstName)
