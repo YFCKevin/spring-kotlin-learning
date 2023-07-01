@@ -23,6 +23,7 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.7.0")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
